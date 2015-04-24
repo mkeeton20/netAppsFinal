@@ -34,19 +34,14 @@ public class UpdateQuery {
 	}
 	
 	public void doUpdate(Product product){
-		String query = "update product set SKU=?, ProductType=?, Flavor=?, Cost=?, Price=?, Quantity=? where SKU=?";
+		String query = "update products set quant=? where idproducts=?";
 		
 		try {
 			PreparedStatement ps = connection.prepareStatement(query);
 			
-			/*ps.setString(1, product.getSKU());
-			ps.setString(2, product.getType());
-			ps.setString(3, product.getFlavor());
-			ps.setDouble(4, product.getCost());
-			ps.setDouble(5, product.getPrice());
-			ps.setInt(6, product.getQuantity());
+			ps.setInt(1, product.getQuant());
 			
-			ps.executeUpdate();*/
+			ps.executeUpdate();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
