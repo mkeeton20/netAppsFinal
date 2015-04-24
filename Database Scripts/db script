@@ -1,0 +1,78 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema shopping
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `shopping` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `shopping` ;
+
+-- -----------------------------------------------------
+-- Table `mydb`.`users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `shopping`.`users` (
+  `idusers` INT NOT NULL AUTO_INCREMENT,
+  `userName` VARCHAR(45) NOT NULL,
+  `pwd` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `fName` VARCHAR(45) NULL,
+  `lName` VARCHAR(45) NULL,
+  PRIMARY KEY (`idusers`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`products`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `shopping`.`products` (
+  `idproducts` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  `price` DOUBLE(7,2) NULL,
+  `quant` INT NULL,
+  `description` VARCHAR(250) NULL,
+  `img` VARCHAR(45) NULL,
+  PRIMARY KEY (`idproducts`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`users_has_products`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `shopping`.`users_has_products` (
+  `users_idusers` INT NOT NULL,
+  `products_idproducts` INT NOT NULL,
+  PRIMARY KEY (`users_idusers`, `products_idproducts`),
+  INDEX `fk_users_has_products_products1_idx` (`products_idproducts` ASC),
+  INDEX `fk_users_has_products_users_idx` (`users_idusers` ASC),
+  CONSTRAINT `fk_users_has_products_users`
+    FOREIGN KEY (`users_idusers`)
+    REFERENCES `mydb`.`users` (`idusers`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_users_has_products_products1`
+    FOREIGN KEY (`products_idproducts`)
+    REFERENCES `mydb`.`products` (`idproducts`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- Data for table `mydb`.`products`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `shopping`;
+INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (0, 'MacBook Pro', 1200, 15, '13\' Macbook pro ', '. ./macpro.jpg');
+INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (1, 'MacBook Air', 1300, 25, '11\' MacBook Air', '. ./macair.jpeg');
+INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (2, 'Mac Pro', 2300, 10, 'Mac Pro ', '. ./pro.jpg');
+INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (3, 'iPhone 6', 700, 50, 'iPhone 6 16gb', '. ./iphone16.jpeg');
+INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (4, 'iPhone 6', 800, 35, 'iPhone 6 32gb', '. ./iphone32.jpeg');
+INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (5, 'iPhone 6 plus', 900, 76, 'iPhone 6 plus 64gb', '. ./iphoneplus64.jpg');
+INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (6, 'iPhone 6 plus', 1000, 12, 'iPhone 6 plus 125gb', '. ./iphoneplus125.jpeg');
+
+COMMIT;
