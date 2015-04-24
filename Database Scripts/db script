@@ -67,12 +67,12 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `shopping`;
-INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (0, 'MacBook Pro', 1200, 15, '13\' Macbook pro ', '. ./macpro.jpg');
-INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (1, 'MacBook Air', 1300, 25, '11\' MacBook Air', '. ./macair.jpeg');
-INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (2, 'Mac Pro', 2300, 10, 'Mac Pro ', '. ./pro.jpg');
-INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (3, 'iPhone 6', 700, 50, 'iPhone 6 16gb', '. ./iphone16.jpeg');
-INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (4, 'iPhone 6', 800, 35, 'iPhone 6 32gb', '. ./iphone32.jpeg');
-INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (5, 'iPhone 6 plus', 900, 76, 'iPhone 6 plus 64gb', '. ./iphoneplus64.jpg');
-INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (6, 'iPhone 6 plus', 1000, 12, 'iPhone 6 plus 125gb', '. ./iphoneplus125.jpeg');
+INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (1, 'MacBook Pro', 1200, 15, '13\' Macbook pro ', '. ./macpro.jpg');
+INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (2, 'MacBook Air', 1300, 25, '11\' MacBook Air', '. ./macair.jpeg');
+INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (3, 'Mac Pro', 2300, 10, 'Mac Pro ', '. ./pro.jpg');
+INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (4, 'iPhone 6', 700, 50, 'iPhone 6 16gb', '. ./iphone16.jpeg');
+INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (5, 'iPhone 6', 800, 35, 'iPhone 6 32gb', '. ./iphone32.jpeg');
+INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (6, 'iPhone 6 plus', 900, 76, 'iPhone 6 plus 64gb', '. ./iphoneplus64.jpg');
+INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (7, 'iPhone 6 plus', 1000, 12, 'iPhone 6 plus 125gb', '. ./iphoneplus125.jpeg');
 
 COMMIT;
