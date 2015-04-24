@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<% String error = (String) request.getAttribute("error"); %>
 <html>
 <head>
 	   <title>UGA CREATE</title>
@@ -79,6 +80,7 @@
             <div class="modal-header">
              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
              <h4 class="modal-title" id="myModalLabel">Create Account</h4>
+             <h2 style="color:red"><%=error%></h2>
             </div>
           <div class="modal-body">
             <form role="form" enctype="multipart/form-data" action="addUser" method="POST">
@@ -89,27 +91,22 @@
           </div>
           <div class="form-group" id="lname">
                <label>Last Name: </label>
-             <input type="textarea" class="form-control" id="lnameA">
+             <input type="textarea" class="form-control" id="lnameA" onchange="lnameFix()">
              <span class="glyphicon glyphicon-ok form-control-feedback" id="nameIconB"></span>
           </div>
-          <div class="form-group" id="user">
-               <label>User Name: </label>
-             <input type="textarea" class="form-control" id="unameA" onchange="unameFix">
-             <span class="glyphicon glyphicon-ok form-control-feedback" id="nameIconB"></span>
+          <div class="form-group" id="uname">
+               <label>User Name:(Must be longer then 6 characters) </label>
+             <input type="textarea" class="form-control" id="unameA" onchange="unameFix()">
+             <span class="glyphicon glyphicon-ok form-control-feedback" id="unameIcon"></span>
           </div>
         <div class="form-group" id="email">
            <label for="email">Email address:</label>
-             <input type="email" class="form-control" id="emailA">
+             <input type="email" class="form-control" id="emailA" onchange="emailFix()">
              <span class="glyphicon glyphicon-ok form-control-feedback" id="emailIcon"></span>
         </div>
-        <div class="form-group" id="address">
-            <label>Address: </label>
-              <input type="textarea" class="form-control" id="addressA">
-              <span class="glyphicon glyphicon-ok form-control-feedback" id="addressIcon"></span>
-        </div>
         <div class="form-group" id="pwd">
-           <label for="pwd">Password:</label>
-             <input type="password" class="form-control" id="pwdA">
+           <label for="pwd">Password:(Must be longer then 6 characters)</label>
+             <input type="password" class="form-control" id="pwdA" onchange="pwdFix()">
              <span class="glyphicon glyphicon-ok form-control-feedback" id="pwdIcon"></span>
          </div>
          <input type="submit" class="btn btn-default" value="Submit">
