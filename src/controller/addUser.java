@@ -48,7 +48,8 @@ public class addUser extends HttpServlet {
 		AddQuery aq = new AddQuery("shopping","root","");
 		aq.doAdd(fName, lName, uName, email, password);
 		
-		String url = "/getProducts";
+		String url = "/index.jsp";
+		request.setAttribute("Sign-up Success!!","error");
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request,response);

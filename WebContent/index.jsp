@@ -1,7 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+ <% 
+ String error = "";
+ if(request.getAttribute("error")==null){
+		 
+ }
+ else{
+	 error = (String) request.getAttribute("error");
+ }
+ %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<% String error = (String) request.getAttribute("error"); %>
 <html>
 <head>
 	   <title>UGA CREATE</title>
@@ -38,13 +46,12 @@
       <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-              <a class="navbar-brand" href="#">Shopping Time</a>
+              <a class="navbar-brand" href="index.jsp">Shopping Time</a>
             </div>
           <div>
          <ul class="nav navbar-nav">
-           <li><a href="#">My Profile</a></li>
-           <li><a href="#">Products</a></li>
-           <li><a href="#">Cart</a></li>
+           <li class="disabled"><a href="products.jsp">Products</a></li>
+           <li class="disabled"><a href="shoppingCart.jsp">Cart</a></li>
          </ul>
        </div>
       </div>
@@ -64,8 +71,9 @@
 
 
     <div class = "container">
+    	<h2 style="color:green"><%=error %></h2>
       <h2>Already have an account? Welcome back!</h2>
-      <form action = "project-search.php" method ="get">
+      <form action = "getProducts" method ="post">
       <input type="text" name="userLogin" class="textfield" placeholder="Username">
       <br><br>
       <input type="text" name="userPassword" class="textfield" placeholder="Password">
@@ -80,7 +88,6 @@
             <div class="modal-header">
              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
              <h4 class="modal-title" id="myModalLabel">Create Account</h4>
-             <h2 style="color:red"><%=error%></h2>
             </div>
           <div class="modal-body">
             <form role="form" enctype="multipart/form-data" action="addUser" method="POST">
