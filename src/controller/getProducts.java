@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+import dbHelpers.ReadQuery;
+
 import dbHelpers.UpdateQuery;
 /**
  * Servlet implementation class getProducts
@@ -37,6 +40,7 @@ public class getProducts extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		String SKU = request.getParameter("SKU");
 		String type = request.getParameter("type");
 		String flavor = request.getParameter("flavor");
@@ -47,6 +51,17 @@ public class getProducts extends HttpServlet {
 		UpdateQuery.doUpdate();
 		
 		String url = "/getShoppingCart";
+
+	
+		ReadQuery rq = new ReadQuery("shopping","root","");
+		
+		rq.doRead();
+		
+		String view = rq.getHTMLTable();
+		request.setAttribute(view, "view");
+			
+		String url = "products.jsp";
+
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

@@ -55,44 +55,20 @@ public class ReadQuery {
 		
 	}
 	public String getHTMLTable(){
-		String table = "";
-		table += "<table border=1>";
-		table += "<tr><td>SKU</td><td>Product Type</td><td>Flavor</td><td>Cost</td><td>Price</td><td>Quantity</td><td>Action</td></tr>";
-		
+		String table = "<div class='container'>";
 		try {
 			while(this.results.next()){
-	/*			Product product = new Product();
-				product.setSKU(this.results.getString("SKU"));
-				product.setType(this.results.getString("ProductType"));
-				product.setFlavor(this.results.getString("Flavor"));
-				product.setCost(this.results.getDouble("Cost"));
+				Product product = new Product();
+				product.setName(this.results.getString("name"));
+				product.setId(this.results.getInt("idproducts"));
+				product.setDescription(this.results.getString("Description"));
 				product.setPrice(this.results.getDouble("Price"));
-				product.setQuantity(this.results.getInt("Quantity"));
+				product.setQuant(this.results.getInt("Quant"));
+				product.setImg(this.results.getString("img"));
+				table += String.format("<div class='row'> <div class='col-sm-3'> <br> <img class='img-responsive' src='%s' data-alt='' data-title=''> <br> </div> <div class='col-sm-9'> <h2>%s</h2> <ul class='list-group ticketView'> <li class='list-group-item ticketView'> <span class='label label-default'>Price</span> <label>%d</label> </li> <li class='list-group-item ticketView'> <span class='label label-default'>Description</span> <label>%s</label> </li> <li class='list-group-item ticketView'> <span class='label label-default'>In Stock</span> <label>%d</label> </li> <li class='list-group-item ticketView'> <span class='label label-default'>Quantity:</span> <br> <br> <form> <input type = 'text' size='2' maxlength='2'> <input type='submit' value='add to cart'> </form> </li> </ul> </div><!--/col--> </div><!--/row--> </div>",product.getImg(),product.getName(),product.getPrice(),product.getDescription(),product.getQuant());
 				
-				table +="<tr>";
-				table +="<td>";
-				table +=	product.getSKU();
-				table +="</td>";
-				table +="<td>";
-				table +=	product.getType();
-				table +="</td>";
-				table +="<td>";
-				table +=	product.getFlavor();
-				table +="</td>";
-				table +="<td>";
-				table +=	product.getCost();
-				table +="</td>";
-				table +="<td>";
-				table +=	product.getPrice();
-				table +="</td>";
-				table +="<td>";
-				table +=	product.getQuantity();
-				table +="</td>";
-				table +="<td>";
-				table += "<a href=update?SKU=" + product.getSKU() + ">update</a> <a href=delete?SKU=" + product.getSKU() +">delete</a>";
-				table +="</td>";
-				table +="</tr>"; */
 			}
+			table+="</div>";
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
