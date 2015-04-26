@@ -1,28 +1,21 @@
-/**
- * 
- */
 package dbHelpers;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Connection;
 import java.sql.SQLException;
 
 import model.Product;
 
-/**
- * @author Steed
- *
- */
-public class ReadQuery {
-	
+public class ReadCart {
 	private Connection connection;
 	private ResultSet results;
+	private String pName;
 	
-	public ReadQuery(String dbName, String uname, String pwd){
+	public ReadCart(String dbName, String uname, String pwd, String pName){
 		String url = "jdbc:mysql://localhost:3306/" + dbName;
-		
+		this.pName = pName;
 		//set up the driver
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -43,7 +36,7 @@ public class ReadQuery {
 		
 	}
 	public void doRead(){
-		String query = "select * from products";
+		String query = "select * from products where name='{pName}'";
 		
 		try {
 			PreparedStatement ps = this.connection.prepareStatement(query);
@@ -54,28 +47,25 @@ public class ReadQuery {
 		}
 		
 	}
-	public String getHTMLTable(){
-		String table = "<div class='container'>";
+	public Product getProduct(){
+		Product product = new Product();
 		try {
-			while(this.results.next()){
-				Product product = new Product();
+			this.results.next();
+				
 				product.setName(this.results.getString("name"));
 				product.setId(this.results.getInt("idproducts"));
 				product.setDescription(this.results.getString("Description"));
 				product.setPrice(this.results.getDouble("Price"));
 				product.setQuant(this.results.getInt("Quant"));
 				product.setImg(this.results.getString("img"));
-				table += String.format("<div class='row'> <div class='col-sm-3'> <br> <img class='img-responsive' src='%s' data-alt='' data-title=''> <br> </div> <div class='col-sm-9'> <h2>%s</h2> <ul class='list-group ticketView'> <li class='list-group-item ticketView'> <span class='label label-default'>Price</span> <label>%d</label> </li> <li class='list-group-item ticketView'> <span class='label label-default'>Description</span> <label>%s</label> </li> <li class='list-group-item ticketView'> <span class='label label-default'>In Stock</span> <label>%d</label> </li> <li class='list-group-item ticketView'> <span class='label label-default'>Quantity:</span> <br> <br> <form action='addCart' method='post'> <input type = 'text' size='2' maxlength='2'><input type='hidden' name='name' value="+ product.getName()+"> <input type='submit' value='add to cart'> </form> </li> </ul> </div><!--/col--> </div><!--/row--> </div>",product.getImg(),product.getName(),product.getPrice(),product.getDescription(),product.getQuant());
 				
 			}
-			table+="</div>";
-		} catch (SQLException e) {
+			
+		 catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return product;
 		
-		table += "</table>";
-		return table;
 	}
-
 }
