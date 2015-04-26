@@ -10,7 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dbHelpers.ReadQuery;
+<<<<<<< HEAD
 import dbHelpers.UpdateQuery;
+=======
+
+
+
+>>>>>>> origin/master
 /**
  * Servlet implementation class getProducts
  */
@@ -39,12 +45,30 @@ this.doPost(request, response);
 */
 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+<<<<<<< HEAD
 ReadQuery rq = new ReadQuery("shopping","root","");
 
 rq.doRead();
 
 String view = rq.getHTMLTable();
 request.setAttribute(view, "view");
+=======
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+
+	
+		ReadQuery rq = new ReadQuery("shopping","root","");
+		
+		rq.doRead();
+		
+		String view = rq.getHTMLTable();
+		request.setAttribute("view", view);
+			
+		String url = "products.jsp";
+>>>>>>> origin/master
 
 String url = "products.jsp";
 

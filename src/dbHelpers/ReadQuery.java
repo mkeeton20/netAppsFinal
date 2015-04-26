@@ -61,20 +61,20 @@ public class ReadQuery {
 				Product product = new Product();
 				product.setName(this.results.getString("name"));
 				product.setId(this.results.getInt("idproducts"));
-				product.setDescription(this.results.getString("Description"));
-				product.setPrice(this.results.getDouble("Price"));
-				product.setQuant(this.results.getInt("Quant"));
+				product.setDescription(this.results.getString("description"));
+				product.setPrice(this.results.getDouble("price"));
+				product.setQuant(this.results.getInt("quant"));
 				product.setImg(this.results.getString("img"));
-				table += String.format("<div class='row'> <div class='col-sm-3'> <br> <img class='img-responsive' src='%s' data-alt='' data-title=''> <br> </div> <div class='col-sm-9'> <h2>%s</h2> <ul class='list-group ticketView'> <li class='list-group-item ticketView'> <span class='label label-default'>Price</span> <label>%d</label> </li> <li class='list-group-item ticketView'> <span class='label label-default'>Description</span> <label>%s</label> </li> <li class='list-group-item ticketView'> <span class='label label-default'>In Stock</span> <label>%d</label> </li> <li class='list-group-item ticketView'> <span class='label label-default'>Quantity:</span> <br> <br> <form action='addCart' method='post'> <input type = 'text' size='2' maxlength='2'><input type='hidden' name='name' value="+ product.getName()+"> <input type='submit' value='add to cart'> </form> </li> </ul> </div><!--/col--> </div><!--/row--> </div>",product.getImg(),product.getName(),product.getPrice(),product.getDescription(),product.getQuant());
+				table += String.format("<div class='row'> <div class='col-sm-3'> <br> <img class='img-responsive' src='%s' data-alt='' data-title=''> <br> </div> <div class='col-sm-9'> <h2>%s</h2> <ul class='list-group ticketView'> <li class='list-group-item ticketView'> <span class='label label-default'>Price</span> <label>%f</label> </li> <li class='list-group-item ticketView'> <span class='label label-default'>Description</span> <label>%s</label> </li> <li class='list-group-item ticketView'> <span class='label label-default'>In Stock</span> <label>%d</label> </li> <li class='list-group-item ticketView'> <span class='label label-default'>Quantity:</span> <br> <br> <form action='addCart' method='post'> <input type = 'text' size='2' maxlength='2'><input type='hidden' name='name' value="+ product.getName()+"> <input type='submit' value='add to cart'> </form> </li> </ul> </div><!--/col--> </div><!--/row-->",product.getImg(),product.getName(),product.getPrice(),product.getDescription(),product.getQuant());
 				
 			}
 			table+="</div>";
+			return table;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		table += "</table>";
 		return table;
 	}
 
