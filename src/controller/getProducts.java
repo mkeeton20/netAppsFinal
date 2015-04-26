@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dbHelpers.ReadQuery;
-import dbHelpers.UpdateQuery;
 /**
  * Servlet implementation class getProducts
  */
@@ -44,7 +43,7 @@ public class getProducts extends HttpServlet {
 		rq.doRead();
 		
 		String view = rq.getHTMLTable();
-		request.setAttribute(view, "view");
+		request.setAttribute("view", view);
 			
 		String url = "products.jsp";
 		

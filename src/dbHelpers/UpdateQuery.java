@@ -25,8 +25,16 @@ public class UpdateQuery {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			this.connection = DriverManager.getConnection(url, uname, pwd);
-		} catch (InstantiationException | IllegalAccessException
-				| ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

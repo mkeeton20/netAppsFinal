@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `shopping`.`products` (
   `price` DOUBLE(7,2) NULL,
   `quant` INT NULL,
   `description` VARCHAR(250) NULL,
-  `img` VARCHAR(45) NULL,
+  `img` VARCHAR(450) NULL,
   PRIMARY KEY (`idproducts`))
 ENGINE = InnoDB;
 
@@ -67,12 +67,12 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `shopping`;
-INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (1, 'MacBook Pro', 1200, 15, '13\' Macbook pro ', '. ./macpro.jpg');
-INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (2, 'MacBook Air', 1300, 25, '11\' MacBook Air', '. ./macair.jpeg');
-INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (3, 'Mac Pro', 2300, 10, 'Mac Pro ', '. ./pro.jpg');
-INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (4, 'iPhone 6', 700, 50, 'iPhone 6 16gb', '. ./iphone16.jpeg');
-INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (5, 'iPhone 6', 800, 35, 'iPhone 6 32gb', '. ./iphone32.jpeg');
-INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (6, 'iPhone 6 plus', 900, 76, 'iPhone 6 plus 64gb', '. ./iphoneplus64.jpg');
-INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (7, 'iPhone 6 plus', 1000, 12, 'iPhone 6 plus 125gb', '. ./iphoneplus125.jpeg');
+INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (1, 'MacBook Pro', 1200, 15, '13\' Macbook pro ', 'http://g-ecx.images-amazon.com/images/G/01/electronics/apple/apple-12q2-macbook-pro-ret-zebra-lg.jpg');
+INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (2, 'MacBook Air', 1300, 25, '11\' MacBook Air', 'http://images.apple.com/macbook-air/images/overview_wireless_hero_enhanced.png');
+INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (3, 'Mac Pro', 2300, 10, 'Mac Pro ', 'http://images.dailytech.com/nimage/MacPro_Back_Glow_PRINT.jpg');
+INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (4, 'iPhone 6', 700, 50, 'iPhone 6 16gb', 'http://store.storeimages.cdn-apple.com/4559/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone6/gold/iphone6-gold-select-2014?wid=1200&hei=630&fmt=jpeg&qlt=95&op_sharpen=0&resMode=bicub&op_usm=0.5,0.5,0,0&iccEmbed=0&layer=comp&.v=1411520689226');
+INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (5, 'iPhone 6', 800, 35, 'iPhone 6 32gb', 'http://store.storeimages.cdn-apple.com/4571/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone6/select/iphone6-select-2014?wid=1200&hei=630&fmt=jpeg&qlt=95&op_sharpen=0&resMode=bicub&op_usm=0.5,0.5,0,0&iccEmbed=0&layer=comp&.v=1411520705587');
+INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (6, 'iPhone 6 plus', 900, 76, 'iPhone 6 plus 64gb', 'http://cdn.gsmarena.com/vv/newsimg/14/09/iphone-6-plus/gsmarena_001.jpg');
+INSERT INTO `shopping`.`products` (`idproducts`, `name`, `price`, `quant`, `description`, `img`) VALUES (7, 'iPhone 6 plus', 1000, 12, 'iPhone 6 plus 125gb', 'http://cdn.ndtv.com/tech/images/iphone_6_plus_bigger_than_bigger_last.jpg');
 
 COMMIT;
