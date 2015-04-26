@@ -90,30 +90,30 @@
              <h4 class="modal-title" id="myModalLabel">Create Account</h4>
             </div>
           <div class="modal-body">
-            <form role="form" enctype="multipart/form-data" action="addUser" method="POST">
+            <form role="form" enctype="multipart/form-data" action="test.jsp" method="POST">
           <div class="form-group" id="fname">
              <label>First Name: </label>
-             <input type="textarea" class="form-control" id="fnameA" onchange="fnameFix()">
+             <input type="text" class="form-control" id="fnameA" name="fnameA" onchange="fnameFix()">
              <span class="glyphicon glyphicon-ok form-control-feedback" id="nameIconA"></span>
           </div>
           <div class="form-group" id="lname">
                <label>Last Name: </label>
-             <input type="textarea" class="form-control" id="lnameA" onchange="lnameFix()">
+             <input type="text" class="form-control" id="lnameA" name="lnameA" onchange="lnameFix()">
              <span class="glyphicon glyphicon-ok form-control-feedback" id="nameIconB"></span>
           </div>
           <div class="form-group" id="uname">
                <label>User Name:(Must be longer then 6 characters) </label>
-             <input type="textarea" class="form-control" id="unameA" onchange="unameFix()">
+             <input type="text" class="form-control" id="unameA" name="unameA" onchange="unameFix()">
              <span class="glyphicon glyphicon-ok form-control-feedback" id="unameIcon"></span>
           </div>
         <div class="form-group" id="email">
            <label for="email">Email address:</label>
-             <input type="email" class="form-control" id="emailA" onchange="emailFix()">
+             <input type="email" class="form-control" id="emailA" name="emailA" onchange="emailFix()">
              <span class="glyphicon glyphicon-ok form-control-feedback" id="emailIcon"></span>
         </div>
         <div class="form-group" id="pwd">
            <label for="pwd">Password:(Must be longer then 6 characters)</label>
-             <input type="password" class="form-control" id="pwdA" onchange="pwdFix()">
+             <input type="password" class="form-control" id="pwdA" name="pwdA" onchange="pwdFix()">
              <span class="glyphicon glyphicon-ok form-control-feedback" id="pwdIcon"></span>
          </div>
          <input type="submit" class="btn btn-default" value="Submit">
