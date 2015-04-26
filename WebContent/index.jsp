@@ -50,8 +50,8 @@
             </div>
           <div>
          <ul class="nav navbar-nav">
-           <li class="disabled"><a href="products.jsp">Products</a></li>
-           <li class="disabled"><a href="shoppingCart.jsp">Cart</a></li>
+           <li class="disabled"><a href="getProducts">Products</a></li>
+           <li class="disabled"><a href="getCart">Cart</a></li>
          </ul>
        </div>
       </div>
