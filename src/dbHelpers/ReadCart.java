@@ -36,7 +36,7 @@ public class ReadCart {
 		
 	}
 	public void doRead(){
-		String query = "select * from products where name='{pName}'";
+		String query = "select * from products where name="+"'"+pName+"'";
 		
 		try {
 			PreparedStatement ps = this.connection.prepareStatement(query);
@@ -54,9 +54,9 @@ public class ReadCart {
 				
 				product.setName(this.results.getString("name"));
 				product.setId(this.results.getInt("idproducts"));
-				product.setDescription(this.results.getString("Description"));
-				product.setPrice(this.results.getDouble("Price"));
-				product.setQuant(this.results.getInt("Quant"));
+				product.setDescription(this.results.getString("description"));
+				product.setPrice(this.results.getDouble("price"));
+				product.setQuant(this.results.getInt("quant"));
 				product.setImg(this.results.getString("img"));
 				
 			}

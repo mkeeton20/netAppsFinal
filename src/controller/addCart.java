@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.Cart;
 import model.Product;
 import dbHelpers.ReadCart;
 
@@ -48,7 +49,7 @@ public class addCart extends HttpServlet {
 		ReadCart rc = new ReadCart("shopping","root","",pName);
 		rc.doRead();
 		Product product = rc.getProduct();
-		ArrayList cart = (ArrayList) session.getAttribute("cart");
+		Cart cart = (Cart) session.getAttribute("cart");
 		cart.add(product);
 		
 		session.setAttribute("cart", cart);

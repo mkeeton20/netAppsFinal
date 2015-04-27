@@ -12,7 +12,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	   <title>UGA CREATE</title>
+	   <title>Shopping.YEA</title>
 	   <meta charset="utf-8" />
      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
   	   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
