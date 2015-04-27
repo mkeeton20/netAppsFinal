@@ -53,8 +53,9 @@ public class addCart extends HttpServlet {
 		rc.doRead();
 		Product product = rc.getProduct();
 		ArrayList cart = (ArrayList) session.getAttribute("cart");
-		UpdateQuantity uc = new UpdateQuantity("products","root","",pName,quantity);
 		cart.add(product);
+		UpdateQuantity uc = new UpdateQuantity("products","root","",pName,quantity);
+		uc.doQuantUpdate(product, quantity);
 		
 		session.setAttribute("cart", cart);
 		
