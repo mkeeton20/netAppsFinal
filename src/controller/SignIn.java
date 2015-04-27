@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.Cart;
+
 /**
  * Servlet implementation class SignIn
  */
@@ -39,7 +41,7 @@ public class SignIn extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		ArrayList cart = new ArrayList();
+		Cart cart = new Cart();
 		session.setAttribute("cart",cart);
 		
 		
