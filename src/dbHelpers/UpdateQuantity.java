@@ -33,13 +33,16 @@ public class UpdateQuantity {
 		}
 	}
 	
-	public void doQuantUpdate(){
+	public void doQuantUpdate(Product product, int quantity){
+		
+		product.setQuant(product.getQuant() + quantity);
 		
 		String query = "update products set quant=? where idproducts = ?";
 		
 			try {
 				PreparedStatement ps = connection.prepareStatement(query);
 				
+				ps.setInt(1, product.getQuant());
 				
 				ps.executeUpdate();
 			} catch (SQLException e) {
