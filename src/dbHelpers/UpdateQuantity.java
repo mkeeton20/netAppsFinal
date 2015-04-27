@@ -11,7 +11,7 @@ public class UpdateQuantity {
 	
 	private Connection connection;
 	
-	public UpdateQuantity(String dbName, String uname, String pwd){
+	public UpdateQuantity(String dbName, String uname, String pwd, String pname, int qty){
 		
 		String url = "jdbc:mysql://localhost:3306/" + dbName;
 		
@@ -33,14 +33,13 @@ public class UpdateQuantity {
 		}
 	}
 	
-	public void doQuantUpdate(Product product){
+	public void doQuantUpdate(){
 		
 		String query = "update products set quant=? where idproducts = ?";
 		
 			try {
 				PreparedStatement ps = connection.prepareStatement(query);
 				
-				ps.setInt(1, product.getQuant());
 				
 				ps.executeUpdate();
 			} catch (SQLException e) {
