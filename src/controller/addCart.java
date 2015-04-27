@@ -14,6 +14,8 @@ import javax.servlet.http.HttpSession;
 import model.Cart;
 import model.Product;
 import dbHelpers.ReadCart;
+import dbHelpers.UpdateQuantity;
+import dbHelpers.UpdateQuery;
 
 /**
  * Servlet implementation class addCart
@@ -44,12 +46,16 @@ public class addCart extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		
+		int quantity = (Integer)(request.getAttribute("quantSelect"));
+		
 		
 		String pName = request.getParameter("name");
 		ReadCart rc = new ReadCart("shopping","root","",pName);
 		rc.doRead();
 		Product product = rc.getProduct();
 		Cart cart = (Cart) session.getAttribute("cart");
+
+		UpdateQuantity uc = new UpdateQuantity("products","root","",pName,quantity);
 		cart.add(product);
 		
 		session.setAttribute("cart", cart);
