@@ -36,10 +36,11 @@ public class ReadCart {
 		
 	}
 	public void doRead(){
-		String query = "select * from products where name="+"'"+pName+"'";
+		String query = "select * from products where name=?";
 		
 		try {
 			PreparedStatement ps = this.connection.prepareStatement(query);
+			ps.setString(1,pName);
 			this.results = ps.executeQuery();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

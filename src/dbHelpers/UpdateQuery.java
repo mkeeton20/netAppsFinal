@@ -17,11 +17,12 @@ import model.Product;
 public class UpdateQuery {
 	
 	private Connection connection;
+	private String pName;
 	
-	public UpdateQuery(String dbName, String uname, String pwd){
+	public UpdateQuery(String dbName, String uname, String pwd , String pName){
 		
 		String url = "jdbc:mysql://localhost:3306/" + dbName;
-		
+		this.pName= pName;
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			this.connection = DriverManager.getConnection(url, uname, pwd);
@@ -42,13 +43,13 @@ public class UpdateQuery {
 	}
 	
 	public void doUpdate(Product product){
-		String query = "update products set quant=? where idproducts=?";
+		String query = "update products set quant=? where name=?";
 		
 		try {
 			PreparedStatement ps = connection.prepareStatement(query);
 			
 			ps.setInt(1, product.getQuant());
-			
+			ps.setString(2,pName);
 			ps.executeUpdate();
 			
 		} catch (SQLException e) {

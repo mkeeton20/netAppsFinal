@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,23 +10,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Cart;
-import model.Product;
 import dbHelpers.ReadCart;
 import dbHelpers.UpdateQuantity;
-import dbHelpers.UpdateQuery;
+import model.Cart;
+import model.Product;
 
 /**
- * Servlet implementation class addCart
+ * Servlet implementation class removeCart
  */
-@WebServlet("/addCart")
-public class addCart extends HttpServlet {
+@WebServlet("/removeCart")
+public class removeCart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public addCart() {
+    public removeCart() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,7 +35,8 @@ public class addCart extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	}
+		doPost(request,response);
+		}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -45,24 +44,18 @@ public class addCart extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		
-		int quantity =Integer.parseInt(request.getParameter("quantSelect")) ;
-		
-		
-		String pName = request.getParameter("name");
-		ReadCart rc = new ReadCart("shopping","root","",pName);
-		rc.doRead();
-		Product product = rc.getProduct();
+		int id =Integer.parseInt(request.getParameter("id"));
 		Cart cart = (Cart) session.getAttribute("cart");
-		cart.add(product);
-		String prodId = ""+product.getId();
-		int cost = (int) (product.getPrice()*quantity);
-		session.setAttribute("cart", cart);
-		session.setAttribute(prodId,quantity);
-		request.setAttribute("cost", cost);
-		String url = "/getCart";
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-		dispatcher.forward(request, response);
+	    Product product = cart.getId(id);
+		cart.remove(id);
+		int quant = (Integer) session.getAttribute(request.getParameter("id"));
+		int newQuant = product.getQuant()+quant;
+		UpdateQuantity uc = new UpdateQuantity("shopping","root","",id,newQuant);
+		uc.doQuantUpdate();
+	
+	String url = "/getCart";
+	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+	dispatcher.forward(request, response);
 	}
 
 }

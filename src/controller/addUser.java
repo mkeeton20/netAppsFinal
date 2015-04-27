@@ -48,12 +48,12 @@ public class addUser extends HttpServlet {
 		String password = request.getParameter("pwdA"); 
 		UnameCheck uc = new UnameCheck("shopping","root","",uName);
 		uc.doRead();
-		if(uc.check() && password.length()<6){
+		if(uc.check() && password.length()>=6){
 			AddQuery aq = new AddQuery("shopping","root","");
 			aq.doAdd(fName, lName, uName, email, password);
 			
 			String url = "/index.jsp";
-			request.setAttribute("Sign-up Success!!","error");
+			request.setAttribute("error","Sign-up Success!!");
 			
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
@@ -61,7 +61,7 @@ public class addUser extends HttpServlet {
 		}
 		else{
 			String url = "/index.jsp";
-			request.setAttribute("UserName or Password error!","error");
+			request.setAttribute("error","UserName or Password error!");
 			
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(url);

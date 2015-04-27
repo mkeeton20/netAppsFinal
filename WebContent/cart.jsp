@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-   <% String view = (String) request.getAttribute("view"); 
-   	
+   <% 
+   String view = (String) request.getAttribute("view"); 
+   	int totalCost = (Integer) session.getAttribute("totalCost");
    %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -24,8 +25,8 @@
             </div>
           <div>
          <ul class="nav navbar-nav">
-           <li><a href="#">Products</a></li>
-           <li class="active"><a href="#">Cart</a></li>
+           <li><a href="getProducts">Products</a></li>
+           <li class="active"><a href="getCart">Cart</a></li>
          </ul>
        </div>
       </div>
@@ -33,5 +34,6 @@
 
      <br>
      <%=view %>
+     <h4>total Cost: <%=totalCost %></h4>
 </body>
 </html>

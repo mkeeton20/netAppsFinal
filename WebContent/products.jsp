@@ -24,8 +24,8 @@
             </div>
           <div>
          <ul class="nav navbar-nav">
-           <li class="active"><a href="#">Products</a></li>
-           <li><a href="#">Cart</a></li>
+           <li class="active"><a href="getProducts">Products</a></li>
+           <li><a href="getCart">Cart</a></li>
          </ul>
        </div>
       </div>

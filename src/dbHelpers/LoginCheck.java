@@ -6,16 +6,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.Product;
-
-public class UnameCheck {
+public class LoginCheck {
 	private Connection connection;
 	private ResultSet results;
 	private String uname;
+	private String password;
 	
-	public UnameCheck(String dbName, String uname, String pwd, String username){
+	public LoginCheck(String dbName, String uname, String pwd, String username, String Password){
 		String url = "jdbc:mysql://localhost:3306/" + dbName;
 		this.uname = username;
+		this.password = Password;
 		//set up the driver
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -35,11 +35,10 @@ public class UnameCheck {
 		}
 }
 	public void doRead(){
-		String query = "select * from users where userName =?";
+		String query = "select * from users where userName ="+"'"+uname+"'"+" and pwd="+"'"+password+"'";
 		
 		try {
 			PreparedStatement ps = this.connection.prepareStatement(query);
-			ps.setString(1, this.uname);
 			this.results = ps.executeQuery();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -50,10 +49,10 @@ public class UnameCheck {
 	public boolean check(){
 		try {
 			if(this.results.next()){
-				return false;
+				return true;
 			}
 			else{
-				return true;
+				return false;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

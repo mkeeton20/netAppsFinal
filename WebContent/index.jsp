@@ -50,8 +50,8 @@
             </div>
           <div>
          <ul class="nav navbar-nav">
-           <li class="disabled"><a href="getProducts">Products</a></li>
-           <li class="disabled"><a href="getCart">Cart</a></li>
+           <li class="disabled"><a href="#">Products</a></li>
+           <li class="disabled"><a href="#">Cart</a></li>
          </ul>
        </div>
       </div>
@@ -73,7 +73,7 @@
     <div class = "container">
     	<h2 style="color:green"><%=error %></h2>
       <h2>Already have an account? Welcome back!</h2>
-      <form action = "getProducts" method ="post">
+      <form action = "SignIn" method ="post">
       <input type="text" name="userLogin" class="textfield" placeholder="Username">
       <br><br>
       <input type="text" name="userPassword" class="textfield" placeholder="Password">
@@ -90,7 +90,7 @@
              <h4 class="modal-title" id="myModalLabel">Create Account</h4>
             </div>
           <div class="modal-body">
-            <form role="form" enctype="multipart/form-data" action="test.jsp" method="POST">
+            <form role="form" action="addUser" method="POST">
           <div class="form-group" id="fname">
              <label>First Name: </label>
              <input type="text" class="form-control" id="fnameA" name="fnameA" onchange="fnameFix()">

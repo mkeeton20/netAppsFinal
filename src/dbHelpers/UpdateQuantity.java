@@ -10,9 +10,12 @@ import model.Product;
 public class UpdateQuantity {
 	
 	private Connection connection;
+	private int id;
+	private int qty;
 	
-	public UpdateQuantity(String dbName, String uname, String pwd, String pname, int qty){
-		
+	public UpdateQuantity(String dbName, String uname, String pwd, int id, int qty){
+		this.id = id;
+		this.qty=qty;
 		String url = "jdbc:mysql://localhost:3306/" + dbName;
 		
 		try {
@@ -33,16 +36,17 @@ public class UpdateQuantity {
 		}
 	}
 	
-	public void doQuantUpdate(Product product, int quantity){
+	public void doQuantUpdate(){
 		
-		product.setQuant(product.getQuant() + quantity);
+		
 		
 		String query = "update products set quant=? where idproducts = ?";
 		
 			try {
 				PreparedStatement ps = connection.prepareStatement(query);
 				
-				ps.setInt(1, product.getQuant());
+				ps.setInt(1,qty);
+				ps.setInt(2, id);
 				
 				ps.executeUpdate();
 			} catch (SQLException e) {
